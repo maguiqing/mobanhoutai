@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录页面</title>
+	<link rel="stylesheet" type="text/css" href="../iconfont/iconfont.css">
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding:0;
+		list-style: none;
+		text-decoration: none;
+	}
+     body{
+     	background: url(../images/ecshop-bg.png) no-repeat;
+        padding: 0 50px;
+        background-size:100%; 
+     }
+     h1{
+     	margin-top:38px; 
+     	height: 42px; 
+     	background: url(../images/shopex.png) no-repeat;
+
+     }
+     .content{
+     	width: 475px;
+     	height: 465px;
+     	position: fixed;
+     	top:50%;
+     	left:50%;
+        margin: -253px 0 0 -238px;
+        padding-bottom: 42px;
+        background:url(../images/icloud-bar.png) no-repeat 0 bottom;
+     }
+     .content h2{
+     	width: 248px;
+     	height:65px;
+     	margin: 0 auto; 
+     	background: url(../images/ecshop-logo.png) no-repeat;
+     	background-size:100%; 
+     }
+     .content .box{
+     	width: 303px;
+     	height: 264px;
+     	padding:55px 71px 31px 71px; 
+     	margin: 0 auto;
+     	background: #e6e6e6;
+     	margin-top:50px;
+     }
+     .box div{
+     	width: 303px;
+     	height: 50px;
+     	position: relative;
+     	border-bottom:1px solid #dddddd; 
+     }
+     .box div input{
+     	width: 265px;
+     	outline: none;
+     	padding-left: 38px;
+     	border: 0;
+     	border-radius: 3px;
+     	height: 50px;
+     }
+     .box div input::-webkit-input-placeholder{
+     	color:#c0c0c0;
+     }
+     .box div .icon-xingmingyonghumingnicheng{
+     	position: absolute;
+     	left:15px;
+     	top:17px;
+     }
+     .box div .icon-mima{
+     	position: absolute;
+     	left:15px;
+     	top:17px;
+     }
+     .box div .icon-ecurityCode{
+     	position: absolute;
+     	left:15px;
+     	top:17px;
+     }
+     .box button{
+     	margin-top: 21px;
+     	width: 303px;
+     	height: 52px;
+     	background: #fc7878;
+     	border:0;
+     	border-radius: 5px;
+     	font-size: 20px;
+     	color:#fff;
+     }
+     .box ul{
+     	height: 43px;
+     	line-height: 43px;
+     }
+     .box ul li{
+     	float:left;
+     	
+     	font-size: 13px;
+     }
+     .box ul li a{
+     	color:#55bde4;
+     	margin-left: 18px;
+     }
+     .box .first{
+     	color:#766676;
+     }
+	</style>
+</head>
+<body>
+    <h1></h1>
+    <div class="content">
+    	<h2></h2>
+    	<div class="box">
+    		<div>
+    		   <i class="iconfont icon-xingmingyonghumingnicheng"></i>
+    		   <input type="text" id="username" placeholder="用户名" />
+    		</div>
+    		<div>
+    		    <i class="iconfont icon-mima"></i>
+    			<input type="password" id="psw" placeholder="密码" />
+    		</div>
+			<div>
+			   <i class="iconfont icon-ecurityCode"></i>
+    		   <input type="text" placeholder="验证码" />
+    		</div>
+			<button onclick="login()">登录</button>
+			<ul>
+				<li><input type="checkbox" /></li>
+				<li><a href="" class="first">保存登录信息</a></li>
+				<li><a href="">忘记密码？</a></li>
+				<li><a href="">去店铺首页》》</a></li>
+			</ul>
+    	</div>
+    </div>
+    
+</body>
+<script type="text/javascript">
+	function login(){
+       $.ajax({
+	       	url:"/api/login",
+	        type:"post",
+	        data:{
+	        	username:$("#username").val(),
+	        	psw:$("#psw").val()
+	        },
+	        success:function(res){
+	           console.log(res);
+	        }
+       })
+	}
+</script>
+</html>
