@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<style type="text/css">
+	  *{
+	  	margin: 0;
+	  	padding: 0;
+	  }
+	  li,ul{
+	     list-style: none;
+	 }
+	 input,select{
+	 	outline: 0;
+	 	border: 1px solid #ccc;
+	 }
+	 a{
+		text-decoration: none;
+	 }
+	 body{
+	 	min-width: 773px;
+	 	padding: 10px;
+	 	/*min-height: 723px;*/
+	 	cursor: auto;
+	 	font-family: "微软雅黑";
+	 	color:#192E32;
+	 	font-size: 12px;
+	 	background:url(../images/body_bj.jpg);
+	 }
+	 h1{
+	 	border-bottom: 1px solid #ccc;
+        color: #333;
+		font-weight: normal;
+		padding: 7px 10px;
+		margin: 0 0 10px 0;
+		overflow: hidden;
+	 }
+	 h1 .action a{
+	 	color:#4c4c4c;
+	 	font-size: 18px;
+
+	 }
+	 h1 span a img{
+	 	width: 110px;
+	 	height: 26px;
+	 	line-height: 26px;
+	 	vertical-align: middle;
+	 }
+	 h1 .action-span a{
+        float: right;
+		height: 26px;
+		line-height: 26px;
+		padding: 0 10px 0 23px;
+		background: #c43926 url(../images/icon_add02.gif) no-repeat 6px center;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 13px;
+		font-weight: normal;
+		text-align: center;
+		cursor: pointer;
+	 }
+	 h1 a:link{
+	 	color:#333;
+	 }
+	 .tab-div{
+	 	background: #f3f3f3;
+	    border: 1px solid #d7d7d7;
+	    margin: 0 0 10px 0;
+	    padding: 1px;
+
+	 }
+	 .tabbar-div{
+        margin-top: 0px;
+		background: #efefef;
+		padding-left: 10px;
+		height: 39px;
+	 }
+	 .tabbar-div p{
+	 	margin: 2px 0 0 0;
+	 }
+	 .tab-front{
+	 	background: #fefefe;
+		height: 39px;
+		line-height: 39px;
+		display: block;
+		float: left;
+		padding: 0 20px;
+		text-align: center;
+		font-weight: bold;
+		cursor: pointer;
+	 }
+	 .tab-back{
+	 	padding: 0 20px;
+		text-align: center;
+		font-size: 13px;
+		float: left;
+		display: block;
+		float: left;
+		color: #787878;
+		line-height: 39px;
+		cursor: pointer;
+	 }
+	 .tabbody-div{
+	 	padding: 10px;
+        background: #fefefe;
+	 } 
+	 .tabbody-div input{
+	 	margin: 5px 0;
+	 }
+	 td.label {
+    text-align: right;
+    vertical-align: top;
+    font-weight: bold;
+    padding: 5px 1em;
+    width: 30%;
+    line-height: 30px;
+    }
+    .require{
+    	    margin-left: 1em;
+		    font: 12px verdana;
+		    color: #FF0000;
+
+    }
+    a.special{
+    	margin: 0 5px;
+        padding: 1px 5px;
+        border: 1px solid #91C4D0;
+        border-right: 2px solid #278296;
+		border-bottom: 2px solid #278296;
+		background: #DDEEF2;
+		text-decoration: none;
+		font-weight: 400;
+    }
+    input.button{
+    	    padding: 5px 15px 5px;
+		    margin: 2px 2px;
+		    border: none;
+		    background: #ff3f3f;
+		    color: #FFF;
+		    cursor: pointer;
+		    border-radius: 3px;
+
+    }
+    .button-div{
+    	text-align: center;
+        padding: 3px 0;
+    }
+    #footer{
+    	background: #f3f3f3 url("../images/th_bg.gif") repeat-x;
+		border: 1px solid #ddd;
+		padding: 15px;
+		color: #9CACAF;
+		margin: 10px 0;
+		text-align: center;
+    }
+</style>
+<body>
+	<h1>
+		<span class="action"><a href="">ECSHOP管理中心</a></span>
+		<span class="action"><a href="">商品列表</a></span>
+		<span><a href=""><img src="../images/jnsy.png"></a></span>
+        <span class="action-span"><a href="">+添加新商品</a></span>
+	</h1>
+	<div class="tab-div">
+		<div class="tabbar-div">
+		    <p>
+		    	<span class="tab-front">通用信息</span>
+		    	<span class="tab-back">详细描述</span>
+		    	<span class="tab-back">其他信息</span>
+		    	<span class="tab-back">商品属性</span>
+		    	<span class="tab-back">商品相册</span>
+		    	<span class="tab-back">关联商品</span>
+		    	<span class="tab-back">配件</span>
+		    	<span class="tab-back">关联文章</span>
+		    </p>
+		</div>
+		<div class="tabbody-div">
+			<form method="post" name="theForm" action="">
+				<table width="90%"style="margin:0 auto;"  align="center">
+					
+						<tr>
+							<td class="label">商品名称：</td>
+							<td>
+								<input type="text" name="goods_name" 
+								style="float:left;width: 192px;height: 23px;line-height: 23px;" size="30"/>
+								<div id="font-color" style="float:left;margin: 10px 0 0 5px;">
+									<img src="../images/color_selecter.gif" style="margin-top: -1px; vertical-align: middle;">
+								</div>
+								<select name="goods_name_style" style="margin: 5px 0;">
+									<option value="">字体样式</option>
+									<option value="">加粗</option>
+									<option value="">倾斜</option>
+									<option value="">下划线</option>
+									<option value="">删除线</option>
+								</select>
+								<span class="require">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<a href=""><img src="../images/notice.gif"></a>
+								商品货号：
+							</td>
+							<td>
+								<input type="text" style="width: 133px;height:23px;"/><br>
+								<span>如果不输入商品货号，系统将自动生成一个唯一的商品货号</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								商品分类：
+							</td>
+							<td>
+								<select style="width: 160px;height:23px;">
+									<option value="">请选择</option>
+									<option value="">钻石</option>
+									<option value="">  衬衫</option>
+									<option value="">     短袖衬衫</option>
+									<option value="">     长袖衬衫</option>
+									<option value="">  裤子</option>
+									<option value="">     休闲短裤</option>
+									<option value="">     休闲裤</option>
+								</select>
+								<a href="" class="special">添加分类</a>
+								<span class="require">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">扩展分类：</td>
+							<td>
+								<input class="button" type="button" value="添加"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">商品品牌：</td>
+							<td>
+								<select style="width: 160px;height:23px;">
+									<option value="">请选择</option>
+									<option value="">gr</option>
+									<option value="">空间大师</option>
+									<option value="">溢彩年华</option>
+									<option value="">EVENY</option>
+									<option value="">圣迪奥</option>
+									<option value="">号都衣舍</option>
+									<option value="">朵以</option>
+								</select>
+								<a href="" class="special">添加品牌</a>
+								<span class="require">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">本店售价：</td>
+							<td>
+								<input type="text" value="0" style="width: 133px;height:23px;"/>
+								<input type="button" style="border:1px solid #000" value="按市场价计算"/>
+								<span class="require">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<a href=""><img src="../images/notice.gif"></a>
+								会员价格：
+							</td>
+							<td>
+								<span>注册用户</span>
+								<input type="text" value="-1" style="width: 64px;height:23px;"/>
+								<span>代销用户</span>
+								<input type="text" value="-1" style="width: 64px;height:23px;"/>
+								<span>vip</span>
+								<input type="text" value="-1" style="width: 64px;height:23px;"/><br>
+                                <span>会员价格为-1表示会员价格按折扣率计算，您也可以为每一个等级指定一个固定价格</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<a href=""><img src="../images/notice.gif"></a>
+								商品优惠价格：
+							</td>
+							<td>
+								<a href="">[+]</a>
+								优惠数量
+								<input type="text" style="width: 64px;height:23px;"/>
+								优惠价格
+								<input type="text" style="width: 64px;height:23px;"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">市场售价：</td>
+							<td>
+								<input type="text" value="0" style="width: 133px;height:23px;"/>
+								<input type="button" style="border:1px solid #000" value="取整数"/>
+							</td>
+						</tr>
+                        <tr>
+							<td class="label">虚拟销量：</td>
+							<td>
+								<input type="text" value="0" style="width: 133px;height:23px;"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<a href=""><img src="../images/notice.gif"></a>
+								赠送消费积分数：
+							</td>
+							<td>
+								<input type="text" value="-1" style="width: 133px;height:23px;"/><br>
+								<span>会员价格为-1表示会员价格按折扣率计算，您也可以为每一个等级指定一个固定价格</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<a href=""><img src="../images/notice.gif"></a>
+								赠送等级积分数：
+							</td>
+							<td>
+								<input type="text" value="-1" style="width: 133px;height:23px;"/><br>
+								<span>会员价格为-1表示会员价格按折扣率计算，您也可以为每一个等级指定一个固定价格</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<a href=""><img src="../images/notice.gif"></a>
+								积分购买金额：
+							</td>
+							<td>
+								<input type="text" value="-1" style="width: 133px;height:23px;"/><br>
+								<span>会员价格为-1表示会员价格按折扣率计算，您也可以为每一个等级指定一个固定价格</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">
+								<input type="checkbox" style="border: 1px solid #000;"/>
+								促销价：
+							</td>
+							<td>
+								<input type="text" value="0" style="width: 133px;height:23px;background: #ddd;"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">促销日期：</td>
+							<td>
+								<input type="text" value="2018-2-27" style="width: 87.4px;height:23px;"/>
+								<input class="button" type="button" value="选择"/>
+								<input type="text" value="2018-3-27" style="width: 87.4px;height:23px;"/>
+								<input class="button" type="button" value="选择"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">上传商品图片:</td>
+							<td>
+								<input size="35" type="file" value="浏览"/>
+								<img src="../images/no.gif"><br>
+								<input type="text" placeholder="商品缩略图外部url" ="-1" style="width: 249px;height:23px;"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="label">上传商品缩略图:</td>
+							<td>
+								<input size="35" type="file" value="浏览"/>
+								<img src="../images/no.gif"><br>
+								<input type="text" placeholder="商品缩略图外部url" ="-1" style="width: 249px;height:23px; background: #ddd;"/><br>
+								<input type="checkbox" style="border: 1px solid #000; float:left;"/>自动生成商品缩略图
+							</td>
+						</tr>
+					
+				</table>
+				<div class="button-div">
+					<input class="button" type="button" value="确定"/>
+					<input class="button" type="reset" value="重置"/>
+				</div>
+			</form>
+       </div>
+	</div>
+	<div id="footer">
+		共执行9个查询，用时0.024634秒，Gzip已禁用，内存占用3.581MB
+		<br>
+		版权所有@copy;2005-2018 上海商派软件有限公司，并保留所有权利。
+	</div>
+</body>
+</html>

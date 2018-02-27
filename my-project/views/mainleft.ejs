@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<style type="text/css">
+	  *{
+	  	margin: 0;
+	  	padding: 0;
+	  }
+	  li,ul{
+	     list-style: none;
+	 }
+		a{
+			text-decoration: none;
+	 }
+	 body{
+	 	font-size: 12px;
+	 	cursor: auto;
+	 	background: #212121;
+	 	min-height:723px;
+	 	font-family: "微软雅黑";
+	 }
+	 #top{
+	 	height: 34px;
+	 	padding-left: 10px;
+
+	 }
+	 #top span{
+	 	line-height: 33px;
+	 	cursor: pointer;
+	 	font-size: 14px;
+        padding: 4px 15px 4px 18px;
+        color:#fff;
+        font-weight: bolder;
+	 }
+	 #bottom{
+       cursor: pointer;
+	 }
+	 #bottom .menu-li{
+	 	text-indent: 40px;
+	 	width: 100%;
+	 	line-height: 42px;
+	 	color:#fff;
+	 	text-align: left;
+	 	border-top:1px solid #7f7f7f;
+	 	background: #575757 url(../images/menu_1.png) 9px 0 no-repeat;
+	 }
+	 #bottom .menu-li:hover{
+	 	background-color: #454545;
+	 }
+	 #bottom .menu-item{
+	 	font-size: 12px;
+	 	height:30px;
+	 	line-height: 30px;
+	 	background:#575757;
+	 	font-weight: normal; 
+	 }
+	 #bottom .menu-item a{
+	 	color:#fff;
+	 	display: block;
+	 	font-size: 12px;
+	 	height:30px;
+	 	line-height: 30px;
+	 }
+	 #bottom .menu-item a:hover,#bottom .menu-item a.on {
+	 	background: #797979;
+	 }
+	</style>
+</head>
+<body>
+		<div id="top"><span>导航菜单</span></div>
+		<div id="bottom">
+			<ul id="menu-ul">
+				<li class="menu-li">
+				    商品管理
+					<ul style="display: none">
+						<li class="menu-item ">
+							<a href="" class="on">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    促销管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    订单管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    广告管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    报告统计
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-li">
+				    文章管理
+					<ul style="display: none">
+						<li class="menu-item">
+							<a href="">商品列表</a>
+						</li>
+						<li class="menu-item">
+							<a href="">添加新商品</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+</body>
+</html>
+<script type="text/javascript">
+	$(".menu-li").click(function(){
+		if($(this).children().css("display")=="none"){
+           $(this).children().css("display","block");
+           $(this).css("background","#454545 url(../images/menu1_1.png) 9px 0 no-repeat")
+		}else{
+		   $(this).children().css("display","none")
+		   $(this).css("background","#575757 url(../images/menu_1.png) 9px 0 no-repeat")
+		}
+		
+	});
+</script>

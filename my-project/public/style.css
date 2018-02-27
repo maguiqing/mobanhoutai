@@ -1,5 +1,8 @@
 *{margin: 0;
 padding:0;}
+body{
+	font-family: "微软雅黑";
+}
 li,ul{
 	list-style: none;
 }
@@ -12,7 +15,8 @@ a{
 }
 .top{
 	height: 76px;
-	padding-left: 518px;
+	overflow: hidden;
+	padding-left: 500px;
 	background: #303030 url(../images/logo.jpg) no-repeat;
 }
 .top ul li{
@@ -28,7 +32,8 @@ a{
 }
 .top ul li img{
 	display: block;
-	margin: 0 auto;
+	margin: auto;
+	height: 35px;
 }
 .top ul li:first-child{
   
@@ -44,4 +49,53 @@ a{
 .nav{
 	height: 42px;
 	background: #575757;
+	overflow: hidden;
+}
+.nav ul{
+	margin: 0 0 0 12px;
+
+}
+.nav li{
+	float:left;
+	height: 41px;
+	line-height: 41px;
+	font-size: 12px;
+}
+.nav li:hover{
+	background: #454545;
+}
+.nav li a{
+	float:left;
+	display: block;
+	padding:0 12px;
+	color:#fff;
+}
+.nav li i{
+	list-style: normal;
+	width: 0px;
+	height: 13px;
+	border-right: 1px solid #656565;
+	border-left: 1px solid #303030;
+	display: inline-block;
+	margin-top: 15px;
+}
+.nav li a span{
+	margin-left: 13px;
+	vertical-align: middle;
+}
+.nav li a img{
+	width: 17px;
+	height: 18px;
+	vertical-align: middle;
+	align:absmiddle;
+}
+.nav li a .num{
+	width: 32px;
+	height: 16px;
+	display: inline-block;
+	line-height: 16px;
+	vertical-align: middle;
+	text-align: center;
+	background: #ff3f3f;
+	border-radius: 10px;
 }

@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var md5 = require("md5");
 var UserModel=require("../model/UserModel");
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -12,9 +11,22 @@ router.get('/login', function(req, res, next) {
 router.get('/page', function(req, res, next) {
   res.render('page');
 })
+router.get('/main', function(req, res, next) {
+  res.render('main');
+})
+router.get('/mainleft', function(req, res, next) {
+  res.render('mainleft');
+})
+router.get('/drag', function(req, res, next) {
+  res.render('drag');
+})
+router.get('/mainright', function(req, res, next) {
+  res.render('mainright');
+})
+
 router.post("/api/login",function(req,res){
     var username=req.body.username;
-    var psw = md5(req.body.psw);
+    var psw = req.body.psw;
     var result={
       status:1,
       message:"登录成功"
@@ -23,12 +35,14 @@ router.post("/api/login",function(req,res){
        if(!err&&docs.length>0){
                 console.log("登录成功");
                 res.send(result);
-                return;
+                
+            }else{
+              console.log("登录失败,请检查您的用户名或者密码"); 
+              result.status=-109;
+              result.message="登录失败,请检查您的用户名或者密码";
+              res.send(result);
             }
-            console.log("登录失败,请检查您的用户名或者密码"); 
-            result.status=-109;
-            result.message="登录失败,请检查您的用户名或者密码";
-            res.send(result);
+            
     })
 })
 module.exports = router;
