@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	    *{
+	  	margin: 0;
+	  	padding: 0;
+	  }
+	  li,ul{
+	     list-style: none;
+	 }
+	 input,select{
+	 	outline: 0;
+	 	border: 1px solid #ccc;
+	 }
+	 a{
+		text-decoration: none;
+	 }
+	 em,th{
+	 	font-weight: normal;
+	 }
+	 body{
+	 	min-width: 773px;
+	 	padding: 10px;
+	 	/*min-height: 723px;*/
+	 	cursor: auto;
+	 	font-family: "微软雅黑";
+	 	color:#192E32;
+	 	font-size: 12px;
+	 	background:url(../images/body_bj.jpg);
+	 }
+	 h1{
+	 	border-bottom: 1px solid #ccc;
+        color: #333;
+		font-weight: normal;
+		padding: 7px 10px;
+		margin: 0 0 10px 0;
+		overflow: hidden;
+	 }
+	 h1 .action a{
+	 	color:#4c4c4c;
+	 	font-size: 18px;
+
+	 }
+	 h1 span a img{
+	 	width: 110px;
+	 	height: 26px;
+	 	line-height: 26px;
+	 	vertical-align: middle;
+	 }
+	 h1 .action-span a{
+        float: right;
+		height: 26px;
+		line-height: 26px;
+		padding: 0 10px 0 23px;
+		background: #c43926;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 13px;
+		font-weight: normal;
+		text-align: center;
+		cursor: pointer;
+	 }
+	 h1 a:link{
+	 	color:#333;
+	 }
+	 .form-div{
+	 	background: #f3f3f3 url("../images/th_bg.gif") repeat-x;
+		border: 1px solid #ddd;
+		padding: 5px;
+		color: #808080;
+		margin: 0 0 10px 0;
+	 }
+	 .form-div input,.form-div select,.form-div img{
+	 	vertical-align: middle;
+	 }
+	  input.button{
+	 	padding: 5px 15px 5px;
+		margin: 2px 2px;
+		border: none;
+		background: #ff3f3f;
+		color: #FFF;
+		cursor: pointer;
+		border-radius: 3px;
+	 }
+	 .list-div{
+	 	border: 0;
+	 	width: 100%;
+
+	 }
+	 .list-div img{
+	 	vertical-align: middle;
+	 }
+	 .list-div table{
+	 	background: #ddd;
+	 	width: 100%;
+	 }
+	 .list-div th{
+	 	line-height: 39px;
+		background: #f3f3f3 url("../images/th_bg.gif") repeat-x;
+		white-space: nowrap;
+	 }
+	 .list-div th a{
+	 	color:#111;
+	 }
+	 .list-div td{
+	 	background: #fff;
+	    background-color: rgb(255, 255, 255);
+		padding: 10px;
+		line-height: 39px;
+	}
+	.list-div td.first-cell{
+		font-weight: bold;
+        padding-left: 10px;
+	}
+	#page-table{
+		width: 100%;
+	}
+	.list-div tr:last-of-type td{
+       border-bottom:none; 
+	}
+	.list-div td:last-of-type{
+		border-right: none;
+	}
+	.list-div #turn-page{
+        text-align: right;
+	}
+	.list-div #page-link{
+       margin-left: 1em;
+	   padding-left: 1em;
+	   border-left: 1px solid #999;
+	}
+	#page-link a{
+		color:#192E32;
+	}
+	#footer{
+    	background: #f3f3f3 url("../images/th_bg.gif") repeat-x;
+		border: 1px solid #ddd;
+		padding: 15px;
+		color: #9CACAF;
+		margin: 10px 0;
+		text-align: center;
+    }
+	</style>
+</head>
+<body>
+	<h1>
+		<span class="action"><a href="">ECSHOP管理中心</a></span>
+		<span class="action"><a href="">-商品列表</a></span>
+		<span><a href=""><img src="../images/jnsy.png"></a></span>
+        <span class="action-span"><a href="">+添加新商品</a></span>
+	</h1>
+	<div class="form-div">
+		<form name="searchForm">
+			<img src="../images/icon_search.gif" width="26" height="22" border="0">
+			<select name="cat_id" style="width: 160px;height: 21px;">
+				<option>所有分类</option>
+				<option>钻石</option>
+				<option>    衬衫</option>
+				<option>        短袖衬衫</option>
+				<option>        长袖衬衫</option>
+				<option>钻石</option>
+				<option>钻石</option>
+				<option>钻石</option>
+				<option>钻石</option>
+			</select>
+			<select name="brand_id" style="width: 108px;height: 21px;">
+				<option>所有品牌</option>
+				<option>gr</option>
+				<option>    空间大师</option>
+				<option>        溢彩年华</option>
+				<option>        EVENY</option>
+				<option>圣迪奥</option>
+				<option>韩都衣舍</option>
+				<option>艾夫诗</option>
+				<option>太平鸟</option>
+			</select>
+			<select name="allone_id" style="width: 75px;height: 21px;">
+				<option>全部</option>
+				<option>精品</option>
+				<option>热品</option>
+				<option>推荐</option>
+				<option>促销</option>
+				<option>特价</option>
+				<option>全部推荐</option>
+			</select>
+			<select name="alltwo_id" style="width: 51px;height: 21px;">
+				<option>全部</option>
+				<option>精品</option>
+				<option>热品</option>
+				<option>推荐</option>
+				<option>促销</option>
+				<option>特价</option>
+				<option>全部推荐</option>
+			</select>
+			关键字
+			<input type="text" style="width: 105px;height: 23px;"/>
+			<input class="button" type="button" value="搜索" />
+		</form>
+	</div>
+	<form method="post" name="listForm">
+		<div id="listDiv" class="list-div">
+			<table cellspacing="1" cellpadding="3">
+				<tr>
+					<th>
+						<input type="checkbox"/>
+						<a href="">编号</a>
+						<img src="../images/sort_desc.gif">
+					</th>
+					<th>
+						<a href="">商品名称</a>
+					</th>
+					<th>
+						<a href="">货号</a>
+					</th>
+					<th>
+						<a href="">价格</a>
+					</th>
+					<th>
+						<a href="">上架</a>
+					</th>
+					<th>
+						<a href="">精品</a>
+					</th>
+					<th>
+						<a href="">新品</a>
+					</th>
+					<th>
+						<a href="">热销</a>
+					</th>
+					<th>
+						<a href="">推荐排序</a>
+					</th>
+					<th>
+						<a href="">库存</a>
+					</th>
+					<th>
+						<a href="">虚拟销量</a>
+					</th>
+					<th>操作</th>
+				</tr>
+				<% for(var i=list.length-1;i>=0;i--) { %>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span><%= list[i].goods_name %></span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span><%= list[i].number %></span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span><%= list[i].price %></span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<% } %> 
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="259"/>259
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>哈哈</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>ECS00259</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="258"/>258
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>哈哈</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>ECS00258</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="257"/>257
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>尝试</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>E123</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+				<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+			     <tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>qwe</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0.00</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>
+			</table>
+			<table id="page-table" cellspacing="0">
+				<tr>
+					<td style="background-color: rgb(255,255,255);" align="right" nowrap="true">
+						<div id="turn-page">
+							总计
+							<span>33</span>
+							个记录分为
+							<span>3</span>
+							页当前第
+							<span>1</span>
+							页，每页
+							<input id="pageSize"type="text" value="15" size="3"/>
+							<span id="page-link">
+								<a href="">第一页</a>
+								<a href="">上一页</a>
+								<a href="">下一页</a>
+								<a href="">最末页</a>
+								<select>
+									<option value="1">1</option>
+									<option value="1">2</option>
+									<option value="1">3</option>
+							    </select>
+							</span>
+							
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<select>
+				<option>请选择</option>
+				<option>回收站</option>
+				<option>上架</option>
+				<option>下架</option>
+				<option>精品</option>
+				<option>取消精品</option>
+				<option>新品</option>
+				<option>取消新品</option>
+				<option>热销</option>
+				<option>取消热销</option>
+			</select>
+			<input id="btnSubmit" type="submit" class="button" value="确定"/>
+		</div>
+	</form>
+	<div id="footer">
+		共执行9个查询，用时0.024634秒，Gzip已禁用，内存占用3.581MB
+		<br>
+		版权所有&copy;2005-2018 上海商派软件有限公司，并保留所有权利。
+	</div>
+</body>
+</html>
