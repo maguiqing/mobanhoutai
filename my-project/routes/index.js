@@ -23,11 +23,42 @@ router.get('/drag', function(req, res, next) {
   res.render('drag');
 })
 router.get('/goods_add', function(req, res, next) {
-  res.render('goods_add');
+   res.render('goods_add');
+  
 })
+ /*if(req.session && req.session.username!=null){
+    res.render('goods_add');
+  }else{
+    res.redirect("/login");
+  }*/
 router.get('/goods_list', function(req, res, next) {
-  GoodsModel.find({}, function(err, docs) {
+  GoodsModel.find({sign:1}, function(err, docs) { 
     res.render("goods_list", {list: docs});
+  })
+})
+/*router.post('/dele', function(req, res, next) {
+    
+    var goods_name = req.body.goods_name;
+    console.log(goods_name)
+
+   GoodsModel.update({goods_name : goods_name},{$set:{sign:0}},function(err,docs){
+       if(!err){
+        console.log(docs)
+         res.send("删除成功")
+       }
+   })
+})*/
+router.post("/api/goods_list", function(req, res){
+   var val=req.body.val;
+  
+    GoodsModel.find({goods_name:{$regex:val}}, function(err, docs) {
+     if(!err && docs.length>0){
+          console.log(docs);
+             res.send(docs);
+        }else{
+              res.send("没有查到");
+        } 
+    
   })
 })
 router.post("/api/add_goods", function(req, res){
@@ -43,6 +74,7 @@ router.post("/api/add_goods", function(req, res){
     imgName = imgName.substr(imgName.lastIndexOf("\\") + 1);
     imgName2= imgName2.substr(imgName2.lastIndexOf("\\") + 1);
     var gm = new GoodsModel();
+    gm.sign=1;
     gm.goods_name = goods_name;
     gm.number = number;
     gm.price = price;
@@ -50,8 +82,8 @@ router.post("/api/add_goods", function(req, res){
     gm.img2= imgName2;
     gm.save(function(err){
       if(!err) {
-        res.send("商品保存成功");
-        console.log(goods_name,number,price,imgName,imgName2)
+        res.render("goods_add");
+        // console.log(goods_name,number,price,imgName,imgName2)
       } else {
         res.send("商品保存失败");
       }
@@ -69,6 +101,7 @@ router.post("/api/login",function(req,res){
     UserModel.find({username:username,psw:psw},function(err,docs){
       console.log(docs)
        if(!err && docs.length>0){
+              // req.session.username=username;
               console.log("登录成功");
               res.send(result);
               
