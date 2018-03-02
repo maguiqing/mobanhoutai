@@ -135,6 +135,7 @@
 	}
 	#page-link a{
 		color:#192E32;
+		cursor: pointer;
 	}
 	#footer{
     	background: #f3f3f3 url("../images/th_bg.gif") repeat-x;
@@ -242,57 +243,32 @@
 					</th>
 					<th>操作</th>
 				</tr>
-				<% for(var i=list.length-1;i>=0;i--) { %>
-				<tr>
-					<td style="background-color: rgb(255,255,255);">
-						<input name="checkbox" type="checkbox" value="260"/>260
+				
+		    </table>
+		    <table id="page-table" cellspacing="0">
+		    	<tr>
+		    		<td style="background-color: rgb(255,255,255);" align="right" nowrap="true">
+						<div id="turn-page">
+							总计
+							<span id="count">5</span>
+							个记录分为
+							<span id="pageCount">1</span>
+							页当前第
+							<span id="pageNum">1</span>
+							页，每页
+							<input type="text" value="4" id="pageSize" style="width: 35px;height: 23px"/>
+							<span id="page-link">
+								<a  id="first">第一页</a>
+								<a  id="prev">上一页</a>
+								<a  id="next">下一页</a>
+								<a  id="last">最末页</a>
+								<select>
+									<option>1</option>
+								</select>
+							</span>
+						</div>
 					</td>
-					<td class="first-cell" style="background-color: rgb(255,255,255);">
-						<span id="goods_name"><%= list[i].goods_name %></span>
-					</td>
-					<td style="background-color: rgb(255,255,255);" align="center">
-						<span id="number"><%= list[i].number %></span>
-					</td>
-					<td style="background-color: rgb(255,255,255);" align="center">
-						<span id="price"><%= list[i].price %></span>
-					</td>
-					<td style="background-color: rgb(255,255,255);" align="center">
-						<img src="../images/no.gif">
-					</td>
-					<td style="background-color: rgb(255,255,255);" align="center">
-						<img src="../images/yes.gif">
-					</td>
-					<td style="background-color: rgb(255,255,255);" align="center">
-						<img src="../images/no.gif">
-					</td>
-					<td style="background-color: rgb(255,255,255);" align="center">
-						<img src="../images/yes.gif">
-					</td>
-					<td style="background-color: rgb(255,255,255);" align="center">
-						<span >100</span>
-					</td>
-					<td style="background-color: rgb(255,255,255);" align="center">
-						<span>1</span>
-					</td>
-					<td style="background-color: rgb(255,255,255);" align="center">
-						<span id="sp">0</span>
-					</td>
-					<td style="background-color: rgb(255,255,255);" align="center">
-						<a href="">
-							<img src="../images/icon_view.gif" width="21" height="21" border="0">
-						</a>
-						<a href="">
-							<img id="edit" src="../images/icon_edit.gif" width="21" height="21" border="0">
-						</a>
-						<a href="">
-							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
-						</a>
-						<a href="" id="del" onclick="del()">
-							<img  src="../images/icon_trash.gif" width="21" height="21" border="0">
-						</a>
-					</td>
-				</tr>
-				<% } %>
+		    	</tr>
 		    </table>
 		</div>
 		<div>
@@ -319,6 +295,78 @@
 </body>
 </html>
 <script type="text/javascript">
+//渲染列表
+    fend();
+	function fend(){
+       $.ajax({
+	       	url:"/api/list",
+	        type:"post",
+	        data:{
+               pageNo:$("#pageNum").html(),
+               pageSize:$("#pageSize").val()
+	        },
+	        success:function(res){
+	        	$("#list-table").children().children().eq(0).siblings().remove();
+	        	$("#count").html(res.count);
+	        	$("#pageCount").html(res.pages);
+	        	$("#pageNum").html(res.pageNo);
+	        	
+	           var str="";
+	           for(var i=res.data.length-1;i>=0;i--){
+                   str+=`<tr>
+					<td style="background-color: rgb(255,255,255);">
+						<input name="checkbox" type="checkbox" value="260"/>260
+					</td>
+					<td class="first-cell" style="background-color: rgb(255,255,255);">
+						<span id="goods_name">${res.data[i].goods_name}</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span id="number">${res.data[i].number}</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span id="price">${res.data[i].price}</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/no.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<img src="../images/yes.gif">
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>100</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>1</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<span>0</span>
+					</td>
+					<td style="background-color: rgb(255,255,255);" align="center">
+						<a href="">
+							<img src="../images/icon_view.gif" width="21" height="21" border="0">
+						</a>
+						<a href="" id="edit" onclick="edit()">
+							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
+						</a>
+						<a href="">
+							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
+						</a>
+						<a href="" id="del" onclick="del()">
+							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
+						</a>
+					</td>
+				</tr>`
+	           }
+	           $("#list-table").append(str);
+	        }
+       })
+	}
 //模糊查询
 	function search(){
        $.ajax({
@@ -368,8 +416,8 @@
 					<th>操作</th>
 				</tr>`
 	           var str="";
-	           for(var i=0;i<res.length;i++){
-                   str=`<tr>
+	           for(var i=res.length-1;i>=0;i--){
+                   str+=`<tr>
 					<td style="background-color: rgb(255,255,255);">
 						<input name="checkbox" type="checkbox" value="260"/>260
 					</td>
@@ -407,13 +455,13 @@
 						<a href="">
 							<img src="../images/icon_view.gif" width="21" height="21" border="0">
 						</a>
-						<a href="">
+						<a href="" id="edit" onclick="edit()">
 							<img src="../images/icon_edit.gif" width="21" height="21" border="0">
 						</a>
 						<a href="">
 							<img src="../images/icon_copy.gif" width="21" height="21" border="0">
 						</a>
-						<a href="">
+						<a href="" id="del" onclick="del()">
 							<img src="../images/icon_trash.gif" width="21" height="21" border="0">
 						</a>
 					</td>
@@ -426,17 +474,26 @@
 	}
 	//假删除
 	function del(){
-		console.log($(this).parent().parent().find("#sp").html());
-		/*$.ajax({
+		$.ajax({
 			url:"/dele",
 			type:"post",
 			data:{
-                goods_name:$(this).parent().parent().children().eq(1).children().html()
+                goods_name:$("#del").parent().parent().children().eq(1).children().html()
 			},
 			success:function(res){
                console.log(res);
 			}
 		})
-		history.go(0);*/
+		history.go(0);
 	}
+	//分页
+	var addpage = parseInt($("#pageNum").html())
+   $("#next").click(function(){
+    		$("#pageNum").html(addpage += 1);
+			fend();
+    	})
+	$("#prev").click(function(){
+		$("#pageNum").html(addpage -= 1);
+			fend();
+	})
 </script>

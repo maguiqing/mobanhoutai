@@ -36,7 +36,8 @@ router.get('/goods_list', function(req, res, next) {
     res.render("goods_list", {list: docs});
   })
 })
-/*router.post('/dele', function(req, res, next) {
+//删除
+router.post('/dele', function(req, res, next) {
     
     var goods_name = req.body.goods_name;
     console.log(goods_name)
@@ -47,20 +48,47 @@ router.get('/goods_list', function(req, res, next) {
          res.send("删除成功")
        }
    })
-})*/
+   /*db.goods.update({goods_name : "嘻嘻"},{$set:{sign:1}})
+   db.goods.remove({sign : 0})
+   db.goods.find()*/
+})
+//模糊查询
 router.post("/api/goods_list", function(req, res){
    var val=req.body.val;
   
-    GoodsModel.find({goods_name:{$regex:val}}, function(err, docs) {
-     if(!err && docs.length>0){
-          console.log(docs);
-             res.send(docs);
-        }else{
-              res.send("没有查到");
-        } 
-    
+    GoodsModel.find({goods_name:{$regex:val},sign:1}, function(err, docs) {
+     
+              res.send(docs);
+            })
+})
+//加载列表
+router.post("/api/list", function(req, res){
+  var pageNo=req.body.pageNo || 1;
+  pageNo=parseInt(pageNo);
+  console.log(pageNo);
+  var pageSize=parseInt(req.body.pageSize) || 4;
+  GoodsModel.count({sign:1}, function(err, count){
+    var pages = Math.ceil(count / pageSize);
+    if(pageNo<1){
+      pageNo=1;
+    }
+    if(pageNo>pages){
+      pageNo=pages;
+    }
+    var query =GoodsModel.find({sign:1}).skip((pageNo-1)*pageSize).limit(pageSize).sort({create_date: -1});
+    query.exec(function(err,docs){
+       var result = {
+                count : count,  
+                pages: pages,
+                data: docs,
+                pageNo: pageNo,
+                pageSize : pageSize
+              }
+              res.json(result);
+    })
   })
 })
+//添加商品
 router.post("/api/add_goods", function(req, res){
   var Form = new multiparty.Form({
     uploadDir: "./public/imgs"
@@ -90,6 +118,7 @@ router.post("/api/add_goods", function(req, res){
     })
   })
 })
+//登录
 router.post("/api/login",function(req,res){
     var username=req.body.username;
     var psw = req.body.psw;
