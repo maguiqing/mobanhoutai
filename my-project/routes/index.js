@@ -65,7 +65,6 @@ router.post("/api/goods_list", function(req, res){
 router.post("/api/list", function(req, res){
   var pageNo=req.body.pageNo || 1;
   pageNo=parseInt(pageNo);
-  console.log(pageNo);
   var pageSize=parseInt(req.body.pageSize) || 4;
   GoodsModel.count({sign:1}, function(err, count){
     var pages = Math.ceil(count / pageSize);
@@ -110,7 +109,7 @@ router.post("/api/add_goods", function(req, res){
     gm.img2= imgName2;
     gm.save(function(err){
       if(!err) {
-        res.render("goods_add");
+        res.render("goods_list");
         // console.log(goods_name,number,price,imgName,imgName2)
       } else {
         res.send("商品保存失败");

@@ -312,7 +312,7 @@
 	        	$("#pageNum").html(res.pageNo);
 	        	
 	           var str="";
-	           for(var i=res.data.length-1;i>=0;i--){
+	           for(var i=0;i<=res.data.length-1;i++){
                    str+=`<tr>
 					<td style="background-color: rgb(255,255,255);">
 						<input name="checkbox" type="checkbox" value="260"/>260
